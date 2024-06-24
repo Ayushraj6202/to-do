@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #08084d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            margin: 0;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .todo{
+            background-color: #492323;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: auto;
+            height: auto;
+            text-align: center;/
+        }
+        #input{
+            padding: 5px 5px;
+            margin-top: 20px;
+            background-color: #020f11;
+            color: white;
+        }
+        .show-list{
+            align-items: center;
+            font-size: 30px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(41, 43, 138);
+            margin-left: 0px;
+            margin-top: 50px;
+            list-style-type: none;
+        }
+        li{
+             background-color: #d8ccbca1;
+            /* color:#050000bf; */ 
+            padding: 5px 5px;
+            font-size: 20px;
+        }
+        #add{
+            background-color: #15cb4c;
+            padding:8px 8px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo">
+        <h1 class="head">To-Do List</h1>
+        <input type="text" id="input" placeholder="Add a new task">
+        <button id="add">Add</button>
+        <div class="show-list"></div>
+    </div>
+<script>
+    let count = 0;
+    const input = document.querySelector('#input')
+    let list = document.querySelector('.show-list')
+    document.querySelector('#add').addEventListener('click',function(){
+        if(input.value!=''){
+            const li = document.createElement('li')
+            li.innerHTML = input.value
+            const Delbutton = document.createElement('button')
+            Delbutton.textContent='Delete'
+
+            Delbutton.style.marginLeft = "20px";
+            Delbutton.style.backgroundColor = "#15cb4c"
+            li.appendChild(Delbutton);
+            list.appendChild(li)
+            
+            Delbutton.addEventListener('click',function(){
+            list.removeChild(li);
+            input.value ='';
+        })}
+        input.value ='';
+    })
+</script>
+</body>
+</html>
